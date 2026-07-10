@@ -1,9 +1,76 @@
 using System;
+using System.IO; 
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Journal Project.");
+        Journal newJournal = new Journal();
+        PromptGenerator prompt = new PromptGenerator();
+        prompt._prompts.Add("Who was the most interesting person I interacted with today?");
+        prompt._prompts.Add("What was the best part of my day?");
+        prompt._prompts.Add("How did I see the hand of the Lord in my life today?");
+        prompt._prompts.Add("What was the strongest emotion I felt today?");
+        prompt._prompts.Add("If I had one thing I could do over today, what would it be?");
+        prompt._prompts.Add("One a scale of 1-10, How would I rate my day? Why?");
+        prompt._prompts.Add("Tell an experience where you have felt the Holy Ghost today.");
+        
+
+
+        Console.WriteLine("Hello! Welcome to your Digital Journal.");
+        int action = 0;
+        while (action != 5)
+        {
+        Console.WriteLine("Please select one of the following choices:");
+        Console.WriteLine("");
+        Console.WriteLine("1. Write");
+        Console.WriteLine("2. Display");
+        Console.WriteLine("3. Load");
+        Console.WriteLine("4. Save");
+        Console.WriteLine("5. Quit");
+
+            Console.Write("What would you like to do? ");
+            action = int.Parse(Console.ReadLine());
+            if (action == 1)
+            {  
+                Entry newEntry = new Entry();
+                string newPrompt = prompt.GetRandomPrompt();
+                Console.WriteLine(newPrompt);
+                string answer = Console.ReadLine();
+
+                DateTime theCurrentTime = DateTime.Now;
+                string date = theCurrentTime.ToShortDateString();
+
+                newEntry._promptText = newPrompt;
+                newEntry._date = date;
+                newEntry._entryText = answer;
+
+                newJournal.AddEntry(newEntry);
+
+                Console.WriteLine("");
+                Console.WriteLine("Entry was added!");
+                Console.WriteLine("");
+            }
+            else if (action == 2)
+            {
+                newJournal.DisplayAll();
+            }
+            else if (action == 3)
+            {
+                Console.Write("What is the filename? ");
+                string filename = Console.ReadLine();
+                newJournal.LoadFromFile(filename);
+            }
+            else if (action == 4)
+            {
+                Console.Write("What is the filename? ");
+                string filename = Console.ReadLine();
+                newJournal.SaveToFile(filename);
+            }
+            else
+            {
+                break;
+            }
+        }
     }
 }
