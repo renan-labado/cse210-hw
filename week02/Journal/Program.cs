@@ -14,6 +14,8 @@ class Program
         prompt._prompts.Add("If I had one thing I could do over today, what would it be?");
         prompt._prompts.Add("One a scale of 1-10, How would I rate my day? Why?");
         prompt._prompts.Add("Tell an experience where you have felt the Holy Ghost today.");
+        prompt._prompts.Add("Is there someone that you helped today feel happy? What did you do?");
+        prompt._prompts.Add("Is there something bad that happened today? What is it?");
         
 
 
@@ -57,13 +59,13 @@ class Program
             }
             else if (action == 3)
             {
-                Console.Write("What is the filename? ");
+                Console.WriteLine("What is the filename?");
                 string filename = Console.ReadLine();
                 newJournal.LoadFromFile(filename);
             }
             else if (action == 4)
             {
-                Console.Write("What is the filename? ");
+                Console.WriteLine("What is the filename? (Use a .txt file)");
                 string filename = Console.ReadLine();
                 newJournal.SaveToFile(filename);
             }
