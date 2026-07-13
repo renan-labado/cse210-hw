@@ -2,7 +2,7 @@ using System;
 using System.IO; 
 
 
-// for creativity, i added a method that would remove an entry to correct something such as 
+// for creativity, i added a method(RemoveEntry) that would remove an entry to correct something such as 
 // mispelled words, wrong entries, etc.
 class Program
 {
