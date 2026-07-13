@@ -7,6 +7,11 @@ public class Journal
         _entries.Add(newEntry);
     }
 
+    public void RemoveEntry(int removeIndex)
+    {
+        _entries.RemoveAt(removeIndex - 1);
+    }
+
     public void DisplayAll()
     {
         foreach (Entry entry in _entries)
