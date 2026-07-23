@@ -4,33 +4,48 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<Book> books = new List<Book>();
-        Book myBook = new Book();
-        myBook._title = "The GOAT";
-        myBook._author = "James Ellsworth";
-        myBook._yearPublished = 2009;
-        myBook._isBorrowed = false;
-        books.Add(myBook);
-
-        Book book1 = new Book();
-        book1._title = "The Hobbit";
-        book1._author = "J.R.R. Tolkien";
-        book1._yearPublished = 1937;
-        book1._isBorrowed = false;
-        books.Add(book1);
-
-        Book book2 = new Book();
-        book2._title = "The Hobbit";
-        book2._author = "J.R.R. Tolkien";
-        book2._yearPublished = 1937;
-        book2._isBorrowed = true;
-        books.Add(book2);
-
-        Console.WriteLine("Library Books:");
-        foreach (Book book in books)
+        Bank newBank = new Bank();
+        Console.WriteLine("Menu");
+        Console.WriteLine("");
+        string response = "";
+        BankAccount newBankAccount = new BankAccount("Renz", 1000);
+        while (response != "4")
         {
-            book.DisplayBook();
+            Console.WriteLine("1. View Accounts");
+            Console.WriteLine("2. Deposit");
+            Console.WriteLine("3. Withdraw");
+            Console.WriteLine("4. Quit");
             Console.WriteLine("");
+            Console.Write("Choice: ");
+            response = Console.ReadLine();
+            
+            if (response == "1") // view accounts
+            {
+                Console.WriteLine(newBankAccount.GetAccountInfo());
+            }
+            
+            else if (response == "2") // deposit
+            {
+                Console.Write("Enter amount to deposit: ");
+                float money = float.Parse(Console.ReadLine());
+                newBankAccount.Deposit(money);
+                Console.WriteLine($"${money} was deposited to the account.");
+            }
+
+            else if (response == "3") // withdraw
+            {
+                Console.Write("Enter amount to withdraw: ");
+                float money = float.Parse(Console.ReadLine());
+                newBankAccount.Withdraw(money);
+                Console.WriteLine($"${money} was withdrawn to the account.");
+            }
+            
+            else
+            {
+                break;
+            }
         }
+
+
     }
 }
