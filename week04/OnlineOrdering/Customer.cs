@@ -1,16 +1,22 @@
 public class Customer
 {
     private string _name;
-    private Address address;
+    private Address _address;
 
     public Customer(string name, Address address)
     {
-        
+        _name = name;
+        _address = address;
     }
 
-    public bool GetBoolAddress(Address address)
+    public bool GetBoolAddress()
     {
-        // address.CheckAddress(address[]);
-        return true;
+        string country = _address.GetCountry();
+        return _address.CheckAddress(country);
+    }
+
+    public string GetNameAndAddress()
+    {
+        return $"Name: {_name} | Address: {_address.GetEverything()}";
     }
 }

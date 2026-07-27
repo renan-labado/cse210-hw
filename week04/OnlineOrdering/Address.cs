@@ -8,17 +8,36 @@ public class Address
 
     public Address(string streetAddress, string city, string state, string country)
     {
-        
+        _streetAddress = streetAddress;
+        _city = city;
+        _state = state;
+        _country = country;
     }
 
-    public string ReturnEverything()
+    public string GetEverything()
     {
-        return "";
+        return $"{_streetAddress}, {_city}, {_state}, {_country}";
     }
 
-    public void CheckAddress(string country)
+    public bool CheckAddress(string country)
     {
         if (country == "USA")
-        _inAmerica = true;
+        {
+            _inAmerica = true;
+        }
+        else if (country == "United States")
+        {
+            _inAmerica = true;
+        }
+        else
+        {
+            _inAmerica = false;
+        }
+        return _inAmerica;
+    }
+
+    public string GetCountry()
+    {
+        return _country;
     }
 }
