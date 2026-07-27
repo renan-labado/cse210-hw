@@ -72,10 +72,7 @@ class Program
         thirdComment4._comment = "I want to shoot like him.";
         thirdVideo.AddToList(thirdComment4);
 
-        firstVideo.PrintEverything();
-        Console.WriteLine("");
-        secondVideo.PrintEverything();
-        Console.WriteLine("");
-        thirdVideo.PrintEverything();
+        Video video = new Video();
+        video.PrintEverything();
     }
 }

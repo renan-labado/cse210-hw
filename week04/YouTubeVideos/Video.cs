@@ -21,10 +21,13 @@ public class Video
 
     public void PrintEverything()
     {
+        foreach (Video video in _videos)
+        {
         Console.WriteLine($"{_title}");
         Console.WriteLine($"{_author}");
         Console.WriteLine($"{_length}");
         Console.WriteLine($"Number of comments: {CommentCount()}");
+        }
 
         foreach (Comment comment in _comments)
         {
