@@ -1,3 +1,6 @@
+// i tried making something for creativity, since one of the common things that the activity do is get a duration, i added 
+// AskForDuration() function in Activity.cs
+
 using System;
 using System.Runtime.CompilerServices;
 
