@@ -57,12 +57,14 @@ class Program
                 string description = "This activity will help you reflect on the good things of your life by having you list as many things as you can for a specific prompt.";
                 ListingActivity listing = new ListingActivity(name, description);
                 listing.DisplayStartingMessage();
-                listing.AskForDuration();
+                int duration = listing.AskForDuration();
+                ListingActivity listing1 = new ListingActivity(name, description, duration);
                 Console.Clear();
+                listing1.SetTheList();
                 Console.WriteLine("Get ready....");
-                listing.ShowSpinner(5);
-                listing.Run();
-                listing.DisplayEndingMessage();
+                listing1.ShowSpinner(5);
+                listing1.Run();
+                listing1.DisplayEndingMessage();
             }
             else
             {

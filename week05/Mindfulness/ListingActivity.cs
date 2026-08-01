@@ -1,3 +1,5 @@
+// the lines 28 to line 52 i got it from the instructor John Reading
+
 public class ListingActivity : Activity
 {
     protected int _count;
@@ -16,18 +18,51 @@ public class ListingActivity : Activity
     }
     public void Run()
     {
-        
+        List<string> responses = new List<string>();
+        Console.WriteLine("");
+        Console.WriteLine("List as many responses you can to the following prompt:");
+        Console.WriteLine($" ——— {GetRandomPrompt()} ——— ");
+        Console.Write($"You may begin in: ");
+        ShowCountDown(5);
+        Console.WriteLine("");
+        DateTime now = DateTime.Now.AddSeconds(_duration);
+        int lineCount = 0;
+        string accum = "";
+        List<string> inputs = new();
+        while (DateTime.Compare(DateTime.Now, now) < 0)
+        {
+            Console.Write("");
+            string input = Console.ReadKey().KeyChar.ToString();
+            if (input == "\r")
+            {
+                ++lineCount;
+                Console.WriteLine("");
+                inputs.Add (accum);
+                accum = "";
+            }
+            else
+            {
+                accum += input;
+            }
+        }
+        int output = 1;
+        foreach (var thing in inputs)
+        {
+            Console.WriteLine($"{output++}: {thing}");
+        }
+        Console.WriteLine($"You have listed {output -= 1} items!");
+        Console.WriteLine("");
+        Console.WriteLine("");
     }
 
-    public void GetRandomPrompt()
+
+    public string GetRandomPrompt()
     {
-        
+        Random randomNumberPrompt = new Random();
+        int promptIndex = randomNumberPrompt.Next(_prompts.Count);
+        string randomPrompt = _prompts[promptIndex];
+        return randomPrompt;
     }
-
-    //public List<string> GetListFromUser()
-    //{
-    //    return "";
-    //}
 
     public void SetTheList()
     {
