@@ -30,13 +30,13 @@ public class Activity
     public void DisplayEndingMessage()
     {
         Console.WriteLine("Well done!");
-        ShowSpinner();
+        ShowSpinner(8);
         Console.WriteLine("");
         Console.WriteLine($"You have completed another {_duration} seconds of the {_name} Activity.");
-        ShowSpinner();
+        ShowSpinner(5);
     }
 
-    public void ShowSpinner()
+    public void ShowSpinner(int seconds)
     {
         List<string> spinnerCharacters = new List<string>();
         spinnerCharacters.Add("│");
@@ -47,25 +47,40 @@ public class Activity
         spinnerCharacters.Add("/");
         spinnerCharacters.Add("—");
         spinnerCharacters.Add("\\");
-        spinnerCharacters.Add("│");
-        foreach (string s in spinnerCharacters)
+
+
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(seconds);
+        int i = 0;
+        
+        while (DateTime.Now < endTime)
         {
-            Console.Write(s);
+            string spinner = spinnerCharacters[i];
+            Console.Write(spinner);
             Thread.Sleep(1000);
             Console.Write("\b \b");
-        }
-        
 
+            i++;
+            if (i >= spinnerCharacters.Count)
+            {
+                i = 0;
+            }
+        }
     }
 
     public void ShowCountDown(int seconds)
     {
-        
+        for (int i = seconds; i > 0; i--)
+        {
+            Console.Write(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        }
     }
-    public void AskForDuration()
+    public int AskForDuration()
     {
         Console.Write("How long, in seconds, would you like for your session? ");
         int duration = int.Parse(Console.ReadLine());
-        _duration = duration;
+        return duration;
     }
 }

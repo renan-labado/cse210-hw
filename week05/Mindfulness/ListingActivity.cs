@@ -19,8 +19,8 @@ public class ListingActivity : Activity
         
     }
 
-    public List<string> GetListFromUser()
-    {
-        return "";
-    }
+    //public List<string> GetListFromUser()
+    //{
+    //    return "";
+    //}
 }

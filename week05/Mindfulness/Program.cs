@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 
 class Program
 {
@@ -22,12 +23,14 @@ class Program
                 string description = "This activity will help you relax by helping you breathing in and out slowly. This will help you process emotions, and clear your mind by focusing on breathing.";
                 BreathingActivity breathing = new BreathingActivity(name, description);
                 breathing.DisplayStartingMessage();
-                breathing.AskForDuration();
+                int duration = breathing.AskForDuration();
+                BreathingActivity breathing1 = new BreathingActivity(name, description, duration);
                 Console.Clear();
                 Console.WriteLine("Get ready....");
-                breathing.ShowSpinner();
-                breathing.Run();
-                breathing.DisplayEndingMessage();
+                breathing1.ShowSpinner(5);
+                breathing1.ShowCountDown(5);
+                breathing1.Run();
+                breathing1.DisplayEndingMessage();
 
             }
             else if (response == 2)
@@ -37,12 +40,14 @@ class Program
                 string description = "This activity will help you reflect and ponder about the times in your life or your day when you have shown strength and resilience. This will help empower you and use that power to help with the other aspects of your life.";
                 ReflectingActivity reflecting = new ReflectingActivity(name, description);
                 reflecting.DisplayStartingMessage();
-                reflecting.AskForDuration();
+                int duration = reflecting.AskForDuration();
+                ReflectingActivity reflecting1 = new ReflectingActivity(name, description, duration);
                 Console.Clear();
+                reflecting1.SetTheLists();
                 Console.WriteLine("Get ready....");
-                reflecting.ShowSpinner();
-                reflecting.Run();
-                reflecting.DisplayEndingMessage();
+                reflecting1.ShowSpinner(5);
+                reflecting1.Run();
+                reflecting1.DisplayEndingMessage();
             }
             else if (response == 3)
             {
@@ -54,7 +59,7 @@ class Program
                 listing.AskForDuration();
                 Console.Clear();
                 Console.WriteLine("Get ready....");
-                listing.ShowSpinner();
+                listing.ShowSpinner(5);
                 listing.Run();
                 listing.DisplayEndingMessage();
             }
