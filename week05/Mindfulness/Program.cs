@@ -46,6 +46,7 @@ class Program
                 reflecting1.SetTheLists();
                 Console.WriteLine("Get ready....");
                 reflecting1.ShowSpinner(5);
+                reflecting1.ShowCountDown(5);
                 reflecting1.Run();
                 reflecting1.DisplayEndingMessage();
             }

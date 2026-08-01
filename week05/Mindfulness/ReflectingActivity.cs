@@ -17,48 +17,40 @@ public class ReflectingActivity : Activity
     }
     public void Run()
     {
-        int totalTime = 0;
-        Random randomNumberPrompt = new Random();
-        int promptIndex = randomNumberPrompt.Next(_prompts.Count);
-        string randomPrompt = _prompts[promptIndex];
+        Console.Clear();
         Console.WriteLine("Consider the following prompt:\n");
-        Console.WriteLine($" ——— {randomPrompt} ——— \n");
+        Console.WriteLine($" ——— {GetRandomPrompt()} ——— \n");
         Console.WriteLine("When you have something in mind, press enter to continue.");
         string action = Console.ReadLine();
         Console.Clear();
+        int totalTime = 0;
         if (action == "")
         {
             while (totalTime < _duration)
             {
-                Random randomNumberQuestion = new Random();
-                int questionIndex = randomNumberQuestion.Next(_questions.Count());
-                string randomQuestion = _questions[questionIndex];
-                Console.WriteLine($"> {randomQuestion}"); ShowSpinner(15);
-                Thread.Sleep(15000);
+                Console.Write($"> {GetRandomQuestion()} "); ShowSpinner(15); Console.Write("\n");
                 totalTime += 15;
             }
         }
+        Console.WriteLine("");
+
 
     }
 
     public string GetRandomPrompt()
     {
-        return "";
+        Random randomNumberPrompt = new Random();
+        int promptIndex = randomNumberPrompt.Next(_prompts.Count);
+        string randomPrompt = _prompts[promptIndex];
+        return randomPrompt;
     }
 
     public string GetRandomQuestion()
     {
-        return "";
-    }
-
-    public void DisplayPrompt()
-    {
-        
-    }
-
-    public void DisplayQuestions()
-    {
-        
+        Random randomNumberQuestion = new Random();
+        int questionIndex = randomNumberQuestion.Next(_questions.Count());
+        string randomQuestion = _questions[questionIndex];
+        return randomQuestion;
     }
 
     public void SetTheLists()
