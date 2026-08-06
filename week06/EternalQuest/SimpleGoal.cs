@@ -22,4 +22,8 @@ public class SimpleGoal : Goal
             return "[ ]";
         }
     }
+    public override string GetStringRepresentation()
+    {
+        return $"SimpleGoal:{_shortName},{_description}, {_points},{_isComplete}";
+    }
 }

@@ -26,4 +26,9 @@ public class ChecklistGoal : Goal
     {
         return $"{GetCheckbox()} {_shortName} ({_description}) -- Currently completed {_amountCompleted}/{_target}";
     }
+
+    public override string GetStringRepresentation()
+    {
+        return $"ChecklistGoal:{_shortName},{_description},{_points},{_bonus},{_target},{_amountCompleted}";
+    }
 }

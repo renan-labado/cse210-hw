@@ -12,4 +12,5 @@ public abstract class Goal
     }
 
     public abstract string GetDetailsString();
+    public abstract string GetStringRepresentation();
 }

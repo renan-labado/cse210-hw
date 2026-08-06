@@ -1,3 +1,4 @@
+using System.IO; 
 public class GoalManager
 {
     private List<Goal> _goals = new List<Goal>();
@@ -39,7 +40,20 @@ public class GoalManager
                     Console.WriteLine($"{number}. {goal.GetDetailsString()}");
                     number ++;
                 }
-                
+            }
+            else if (choice == 3)
+            {
+                Console.Write("What is the filename for the goal file? "); 
+                string filename = Console.ReadLine();
+                using (StreamWriter outputFile = new StreamWriter(filename))
+                {
+                    outputFile.WriteLine(_score);
+                    foreach (Goal goal in _goals)
+                    {
+                        outputFile.WriteLine(goal.GetStringRepresentation());
+                    }
+
+}
             }
         }
     }
