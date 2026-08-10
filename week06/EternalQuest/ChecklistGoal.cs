@@ -31,4 +31,14 @@ public class ChecklistGoal : Goal
     {
         return $"ChecklistGoal:{_shortName},{_description},{_points},{_bonus},{_target},{_amountCompleted}";
     }
+
+    public override void RecordEvent()
+    {
+        _amountCompleted += 1;
+    }
+
+    public override int GetPoints()
+    {
+        return _points;
+    }
 }

@@ -51,9 +51,31 @@ public class GoalManager
                     foreach (Goal goal in _goals)
                     {
                         outputFile.WriteLine(goal.GetStringRepresentation());
+                    }    
+                }
+            }
+            else if (choice == 4)
+            {
+                Console.Write("What is the filename for the goal file? "); 
+                string filename = Console.ReadLine();
+                string[] lines = System.IO.File.ReadAllLines(filename);
+                foreach (string line in lines)
+                    {
+                        string[] parts = line.Split(",");
+                        string score = line;
+                        string goal1 = parts[0];
+                        Console.WriteLine(score);
+                        Console.WriteLine(goal1);
                     }
-
-}
+            }
+            else if (choice == 5)
+            {
+                Console.Write("Which goal did you accomplish? ");
+                int goalFinished = int.Parse(Console.ReadLine());
+                int indexGoalFinished = goalFinished - 1;
+                _goals[indexGoalFinished].RecordEvent();
+                int points = _goals[indexGoalFinished].GetPoints();
+                _score += points;
             }
         }
     }

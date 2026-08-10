@@ -12,4 +12,14 @@ public class EternalGoal : Goal
     {
         return $"EternalGoal:{_shortName},{_description},{_points}";
     }
+
+    public override void RecordEvent()
+    {
+        
+    }
+
+    public override int GetPoints()
+    {
+        return _points;
+    }
 }
